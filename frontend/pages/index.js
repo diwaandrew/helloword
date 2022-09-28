@@ -17,7 +17,8 @@ export default function Home() {
     }
   }
   return (
-    <div>
+    <div className='container'>
+      <h3>TRY API REST</h3>
       {error && <div>Failed to load {error.toString()}</div>}
         {
           !data ? <div>Loading...</div>
@@ -27,11 +28,25 @@ export default function Home() {
         }
 
       <Input onSuccess={getData} />
-      {data?.data ? data.data.map((item, index) => (
-        <p key={index}>{item}</p>
-      )) :
-        <p>data kosong</p>
-      }
+      
+      <table className='center'>
+      <tr>
+        <th>
+          Result
+        </th>
+      </tr>
+        {data?.data ? data.data.map((item, index) => (
+          <tr>
+            <td>
+              <a key={index}>{item}</a>
+            </td>
+          </tr>
+        )) :
+          <p>data kosong</p>
+        }
+     
+      </table>
+       
     </div>
     
   )
@@ -81,10 +96,10 @@ function Input({onSuccess}) {
     }
   }
   return (
-    <div>
+    <div >
       <form onSubmit={handleSubmit}>
         <input name="data" type="text" />
-        <button >Submit</button>
+        <button className='submit' >Submit</button>
       </form>
     </div>
   )
