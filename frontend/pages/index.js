@@ -17,36 +17,21 @@ export default function Home() {
     }
   }
   return (
-    <div className='container'>
-      <h3>TRY API REST</h3>
-      {error && <div>Failed to load {error.toString()}</div>}
-        {
-          !data ? <div>Loading...</div>
-            : (
-              (data?.data ?? []).length === 0 && <p>data kosong</p>
-            )
-        }
+    <div>
+		{error && <div>Failed to load {error.toString()}</div>}
+      {
+        !data ? <div>Loading...</div>
+          : (
+            (data?.data ?? []).length === 0 && <p>data kosong</p>
+          )
+      }
 
       <Input onSuccess={getData} />
-      
-      <table className='center'>
-      <tr>
-        <th>
-          Result
-        </th>
-      </tr>
-        {data?.data ? data.data.map((item, index) => (
-          <tr>
-            <td>
-              <a key={index}>{item}</a>
-            </td>
-          </tr>
-        )) :
-          <p>data kosong</p>
-        }
-     
-      </table>
-       
+      {data?.data ? data.data.map((item, index) => (
+        <p key={index}>{item}</p>
+      )) :
+        <p>data kosong</p>
+      }
     </div>
     
   )
@@ -99,7 +84,7 @@ function Input({onSuccess}) {
     <div >
       <form onSubmit={handleSubmit}>
         <input name="data" type="text" />
-        <button className='submit' >Submit</button>
+        <button>Submit</button>
       </form>
     </div>
   )
