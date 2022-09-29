@@ -91,10 +91,6 @@ func main() {
 		panic("failed to migrate database")
 	}
 
-	if err := db.AutoMigrate(&Todos{}); err != nil {
-		panic("failed to migrate database")
-	}
-
 	// db = make([]string, 0)
 	repo := repository{
 		db: db,
